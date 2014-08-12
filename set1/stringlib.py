@@ -22,6 +22,8 @@ def encode_base64(string):
     return base64.standard_b64encode(string)
 
 
-def xor_strings(string1, string2):
-    x = ''.join(str(int(a)^int(b)) for a, b in zip(string1, string2))
-    return encode_hex(x)
+def xor_hexes(hex1, hex2):
+    dec1 = decode_hex(hex1)
+    dec2 = decode_hex(hex2)
+    xored = (a^b for a, b in zip(dec1, dec2))
+    return encode_hex(bytearray(xored)).lower()
