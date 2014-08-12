@@ -2,12 +2,16 @@ import base64
 import unittest
 
 
-def decode_hex(string):
-    return base64.b16decode(string, casefold=True)
+def decode_hex(bstring):
+    if isinstance(bstring, str):
+        bstring = bytes(bstring, encoding='ascii')
+    return base64.b16decode(bstring, casefold=True)
 
 
-def encode_hex(string):
-    return base64.b16encode(string)
+def encode_hex(bstring):
+    if isinstance(bstring, str):
+        bstring = bytes(bstring, encoding='ascii')
+    return base64.b16encode(bstring)
 
 
 def decode_base64(string):
