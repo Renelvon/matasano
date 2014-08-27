@@ -6,7 +6,6 @@ import stringlib
 
 
 def solve(crypt_msg):
-    msg_len = len(crypt_msg) // 2  # compensate for hex encoding
     max_score, decoder, secret = 0, None, None
     unhex_msg = stringlib.decode_hex(crypt_msg)
     for c in range(256):

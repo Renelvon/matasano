@@ -1,10 +1,8 @@
-import string
 import unittest
 
 from Crypto.Util import strxor
 
 import stringlib
-
 
 def solve(plaintext, key):
     ltext, lkey = len(plaintext), len(key)

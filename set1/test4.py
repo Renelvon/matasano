@@ -1,12 +1,9 @@
-import string
 import unittest
 
-import stringlib
 import test3
 
 
 def solve():
-    l = []
     with open("data4.txt", "r") as f:
         best_score, the_decoder, best_msg = 0, None, None
         for msg in f:
