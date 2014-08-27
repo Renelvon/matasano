@@ -4,4 +4,4 @@ My solutions to the [matasano crypto challenges](http://cryptopals.com) in Pytho
 * [pycrypto](https://pypi.python.org/pypi/pycrypto): crypto library in python
 
 ## License
-llama is released under the [MIT License](LICENSE).
+Code is released under the [MIT License](LICENSE).
