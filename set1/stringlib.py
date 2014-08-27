@@ -23,13 +23,6 @@ def encode_base64(string):
     return base64.standard_b64encode(string)
 
 
-def xor_hexes(hex1, hex2):
-    dec1 = decode_hex(hex1)
-    dec2 = decode_hex(hex2)
-    xored = (a^b for a, b in zip(dec1, dec2))
-    return encode_hex(bytearray(xored)).lower()
-
-
 def score(bstring):
     letters = string.ascii_letters + ' '
     count_letters = sum(chr(c) in letters for c in bstring)
