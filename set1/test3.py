@@ -1,23 +1,21 @@
-import string
 import unittest
+
+from Crypto.Util import strxor
 
 import stringlib
 
 
 def solve(crypt_msg):
     msg_len = len(crypt_msg) // 2  # compensate for hex encoding
-    max_score, decoder = 0, 'a'
-    for c in string.printable:
-        xor_msg = stringlib.encode_hex(c * msg_len)
-        hex_msg = stringlib.xor_hexes(crypt_msg, xor_msg)
-        dec_msg = stringlib.decode_hex(hex_msg)
+    max_score, decoder, secret = 0, None, None
+    unhex_msg = stringlib.decode_hex(crypt_msg)
+    for c in range(256):
+        dec_msg = strxor.strxor_c(unhex_msg, c)
         score = stringlib.score(dec_msg)
         if score > max_score:
-            max_score, decoder = score, c
+            max_score, decoder, secret = score, c, dec_msg
 
-    xor_msg = stringlib.encode_hex(decoder * msg_len)
-    hex_msg = stringlib.xor_hexes(crypt_msg, xor_msg)
-    return stringlib.decode_hex(hex_msg), decoder, score
+    return secret, max_score, decoder
 
 
 class Test(unittest.TestCase):
