@@ -1,10 +1,14 @@
 import unittest
 
+from Crypto.Util import strxor
+
 import stringlib
 
-
 def solve(hex1, hex2):
-    return stringlib.xor_hexes(hex1, hex2)
+    dec1 = stringlib.decode_hex(hex1)
+    dec2 = stringlib.decode_hex(hex2)
+    xored = strxor.strxor(dec1, dec2)
+    return stringlib.encode_hex(xored).lower()
 
 class Test(unittest.TestCase):
     def test_solve(self):
