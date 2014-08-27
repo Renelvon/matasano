@@ -16,7 +16,7 @@ def encode_hex(bstring):
 
 
 def decode_base64(string):
-    return base64.standard_b64decode(string, validate=True)
+    return base64.standard_b64decode(string)
 
 
 def encode_base64(string):
