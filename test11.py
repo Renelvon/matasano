@@ -25,7 +25,7 @@ def solve():
     plaintext = "a" * (16 * 10)
     ciphertext, mode = encryption_oracle(plaintext)
     block_cnt = len(ciphertext) // 16
-    blocks = [ciphertext[16*k : 16*(k+1)] for k in range(block_cnt)]
+    blocks = (ciphertext[16*k : 16*(k+1)] for k in range(block_cnt))
     s = set(blocks)
     guess_mode = AES.MODE_ECB if len(s) < 5 else AES.MODE_CBC
     return guess_mode == mode
